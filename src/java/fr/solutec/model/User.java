@@ -9,17 +9,17 @@ package fr.solutec.model;
  *
  * @author Corentin
  */
-public class Person {
+public class User {
     private int id ;
     private String nom;
     private String login;
     private String mdp;
     
-public Person(){
+public User(){
     
 }
 
-public Person(int id, String nom, String login, String mdp){
+public User(int id, String nom, String login, String mdp){
     this.id = id;
     this.nom = nom;
     this.login = login;
