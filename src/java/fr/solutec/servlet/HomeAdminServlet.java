@@ -60,19 +60,20 @@ public class HomeAdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    HttpSession session = request.getSession();
+    
+        HttpSession session = request.getSession();
         User u = (User)session.getAttribute("user");
         if(u!=null){
-            request.getRequestDispatcher("WEB-INF/homeAdmin.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/Admin/homeAdmin.jsp").forward(request, response);
             
         }
         else{
             request.setAttribute("msg", "veuillez vous connecter");
         
         request.getRequestDispatcher("indexAdmin.jsp").forward(request, response);
+    
     }
     }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *

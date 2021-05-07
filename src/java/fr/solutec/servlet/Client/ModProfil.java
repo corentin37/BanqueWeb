@@ -25,8 +25,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Floriane Richard
  */
-@WebServlet(name = "CompteServlet", urlPatterns = {"/compte"})
-public class CompteServlet extends HttpServlet {
+@WebServlet(name = "ModProfil", urlPatterns = {"/profil"})
+public class ModProfil extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +45,10 @@ public class CompteServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CompteServlet</title>");            
+            out.println("<title>Servlet ModProfil</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CompteServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ModProfil at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,9 +65,8 @@ public class CompteServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-         HttpSession session = request.getSession();
+            throws ServletException, IOException { 
+        HttpSession session = request.getSession();
          User u = (User) session.getAttribute("user");
                 if(u!=null){
                     request.setAttribute("nomClient", u.getNom());
@@ -80,15 +79,19 @@ public class CompteServlet extends HttpServlet {
              } catch (SQLException ex) {
                  Logger.getLogger(HomeServletClient.class.getName()).log(Level.SEVERE, null, ex);
              }
-                    request.setAttribute("solde", c.getSolde() );
+                    request.setAttribute("solde", c.getSolde());
+                    request.setAttribute("conseiller", c.getConseiller_person_id());
                     
-                    request.getRequestDispatcher("WEB-INF/Client/compte.jsp").forward(request, response);
+                    
+                    
+                    request.getRequestDispatcher("WEB-INF/Client/modProfil.jsp").forward(request, response);
                 }
                 else {
                     request.setAttribute("msg", "Veuillez vous connecter");
                     request.getRequestDispatcher("indexUser.jsp").forward(request, response);
                 }
-        request.getRequestDispatcher("WEB-INF/Client/compte.jsp").forward(request, response);
+       
+        request.getRequestDispatcher("WEB-INF/Client/modProfil.jsp").forward(request, response);
     }
 
     /**
@@ -102,12 +105,12 @@ public class CompteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("user");
-        processRequest(request, response);
+             processRequest(request, response);
     }
 
-    /**
+    /**HttpSession session = request.getSession();
+             User u = (User) session.getAttribute("user");
+            request.setAttribute("nomClient", u.getNom());
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
