@@ -70,17 +70,14 @@ public class CompteServlet extends HttpServlet {
          HttpSession session = request.getSession();
          User u = (User) session.getAttribute("user");
                 if(u!=null){
-                    request.setAttribute("nomClient", u.getNom());
-                    request.setAttribute("loginClient",u.getLogin());
-                    request.setAttribute("mailClient", u.getMail());
-                    request.setAttribute("mdp", u.getMdp());
+                    request.setAttribute("user", u); 
                     Compte c = new Compte();
              try {
                  c = CompteDao.getOneCompte(u);
              } catch (SQLException ex) {
                  Logger.getLogger(HomeServletClient.class.getName()).log(Level.SEVERE, null, ex);
              }
-                    request.setAttribute("solde", c.getSolde() );
+                    request.setAttribute("compte",c);
                     
                     request.getRequestDispatcher("WEB-INF/Client/compte.jsp").forward(request, response);
                 }

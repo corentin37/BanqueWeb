@@ -33,7 +33,7 @@
              <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="img/money.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Solde : ${solde}€</h5>
+                    <h5 class="card-title">Solde : ${compte.solde} €</h5>
                     <p class="card-text">Contactez votre conseiller pour effectuer des opérations</p>
                     <a href="contact" class="btn btn-primary">Contact</a>
                 </div>

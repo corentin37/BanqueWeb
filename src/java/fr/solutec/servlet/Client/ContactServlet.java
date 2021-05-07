@@ -7,6 +7,8 @@ package fr.solutec.servlet.Client;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,6 +60,12 @@ public class ContactServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        List<String> messages = new ArrayList<>();
+        messages.add("Contact1");
+        messages.add("TryAgain");
+        
+        request.setAttribute("messages", messages);
         request.getRequestDispatcher("WEB-INF/Client/contact.jsp").forward(request, response);
     }
 
@@ -72,6 +80,12 @@ public class ContactServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+   
+        String information = request.getParameter("mess");
+        
+        
+        response.sendRedirect("contact");// test d'envoi de messages ne marche pas!!!
+
         processRequest(request, response);
     }
 
