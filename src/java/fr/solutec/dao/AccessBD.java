@@ -21,7 +21,7 @@ public class AccessBD {
     //on doit rajouter le driver jdbc
     protected static final String DRIVER_NAME = "com.mysql.jdbc.Driver"; 
 //on doit préciser le nom de notre base de données
-    protected static final String DB_NAME = "dev-2-deb"; 
+    protected static final String DB_NAME = "banque_trio"; 
 //l'adresse de la bd est localhost car on est en local.si en distance mettre ip
     protected static final String URL = "jdbc:mysql://localhost/"+DB_NAME; 
 //root peut se connecter à n'importe quel bd sur notre server.ene prod on utilise pas root, mais en dev
