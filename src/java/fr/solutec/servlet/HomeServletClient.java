@@ -5,9 +5,14 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.CompteDao;
+import fr.solutec.model.Compte;
 import fr.solutec.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,17 +65,22 @@ public class HomeServletClient extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("user");
+         HttpSession session = request.getSession();
+         User u = (User) session.getAttribute("user");
                 if(u!=null){
                     request.setAttribute("nomClient", u.getNom());
                     request.setAttribute("loginClient",u.getLogin());
-                    //request.setAttribute("mailClient", u.getMail());
+                    request.setAttribute("mailClient", u.getMail());
                     request.setAttribute("mdp", u.getMdp());
+                    Compte c = new Compte();
+             try {
+                 c = CompteDao.getOneCompte(u);
+             } catch (SQLException ex) {
+                 Logger.getLogger(HomeServletClient.class.getName()).log(Level.SEVERE, null, ex);
+             }
+                    request.setAttribute("solde", c.getSolde() );
                     
                     request.getRequestDispatcher("WEB-INF/Client/home.jsp").forward(request, response);
-                    
-                   
                 }
                 else {
                     request.setAttribute("msg", "Veuillez vous connecter");

@@ -49,11 +49,19 @@ public class UserDao {
             PreparedStatement prepare = connexion.prepareStatement(sql);
             prepare.setString(1, nom);
             prepare.setString(2, login);
-            prepare.setString(3, password);
-            
+            prepare.setString(3, password);      
             prepare.execute();
-      
+    }
     
+     public static void modify (String nom, String login, String password)throws SQLException{
+        //pas de resultset car on fait un insert
+        String sql = "MODIFY INTO person (nom, login, password) VALUES (?, ?, ?)";
+            Connection connexion = AccessBD.getConnection();
+            PreparedStatement prepare = connexion.prepareStatement(sql);
+            prepare.setString(1, nom);
+            prepare.setString(2, login);
+            prepare.setString(3, password);      
+            prepare.execute();
     }
 
 public static List<User> getAllPerson()throws SQLException { 
