@@ -39,6 +39,7 @@
                         <a class="nav-item nav-link" href="creerConseiller">Créer profil conseiller</a>
                         <a class="nav-item nav-link" href="modifierConseiller">Modifier profil Conseiller</a>
                         <a class="nav-item nav-link" href="desacConseiller">Désactiver/Réactiver conseiller</a>
+                        <a class="nav-item nav-link" href="affichageConseillers">Afficher les conseillers</a>
                         <a class="nav-item nav-link" href="historiqueConnexions">Historique des connexions</a>
                         
                     </div>
