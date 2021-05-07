@@ -20,7 +20,7 @@ public class UserDao {
         //Person est le nom de la table de la bd
         //si écrit comme ça risque de faille et piratage, donc pas de concat dans une requete sql.Il peut écrire une requete au lieu de login et mdp
         //String sql = "SELECT * FROM Person WHERE login = " + login + " AND mdp = " + mdp;
-        String sql = "SELECT * FROM Person WHERE login = ? AND mdp = ? ";
+        String sql = "SELECT * FROM person WHERE login = ? AND password = ? ";
         
         //on va se connecter à notre bd en créant une variable de type Connection
         Connection connexion = AccessBD.getConnection();

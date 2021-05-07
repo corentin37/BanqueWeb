@@ -5,7 +5,6 @@
  */
 package fr.solutec.servlet;
 
-import fr.solutec.dao.UserDao;
 import fr.solutec.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,13 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author damie
+ * @author Corentin
  */
-@WebServlet(name = "ConnexionAdminServlet", urlPatterns = {"/loginAdmin"})
-public class ConnexionAdminServlet extends HttpServlet {
+@WebServlet(name = "HomeAdminServlet", urlPatterns = {"/hAdmin"})
+public class HomeAdminServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class ConnexionAdminServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConnexionAdminServlet</title>");            
+            out.println("<title>Servlet HomeAdminServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConnexionAdminServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet HomeAdminServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,8 +60,17 @@ public class ConnexionAdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("indexAdmin.jsp").forward(request, response);
+    HttpSession session = request.getSession();
+        User u = (User)session.getAttribute("user");
+        if(u!=null){
+            request.getRequestDispatcher("WEB-INF/homeAdmin.jsp").forward(request, response);
+            
+        }
+        else{
+            request.setAttribute("msg", "veuillez vous connecter");
         
+        request.getRequestDispatcher("indexAdmin.jsp").forward(request, response);
+    }
     }
 
     /**
@@ -75,25 +84,8 @@ public class ConnexionAdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String identifiant = request.getParameter("login");//on va récuperer les infos avec parameter basé sur le name de l'input du code html dans index 
-       String mdp = request.getParameter("password");
-       
-        try {
-            User u = UserDao.getByLoginAndPassword(identifiant,mdp);
-            if(u!= null){
-                //on va créer la session pour ne pas aller sur /home directement sans connexion
-                request.getSession(true).setAttribute("user", u);//setAttribute clé valeur, true car on ouvre la session
-                response.sendRedirect("hAdmin");//renvoi sur le servlet homeAdmin
-            }
-            else{
-                //on va préciser que son id ou mdp est incorrect en les récupérant et en les envoyant vers jsp index
-                request.setAttribute("msg", "identifiant ou mot de passe incorrect");//marche avec clé valeur (msg : message), mettre ça avec $ dans le index (signifie qu'on modifie l'attribut msg)
-                request.getRequestDispatcher("indexAdmin.jsp").forward(request, response);
-            }
-        } catch (Exception e) {
-            PrintWriter out = response.getWriter();
-            out.println("exc: " + e.getMessage());
-    }}
+        processRequest(request, response);
+    }
 
     /**
      * Returns a short description of the servlet.
