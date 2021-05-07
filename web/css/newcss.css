@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 mai 2021, 13:45:57
+    Author     : damie
+*/
+
+.center{
+    text-align: center;
+}
+
+.mt-15{
+    margin-top: 15px;
+}
+
+.mt-4{
+    margin-top: 4px;
+}
+
+.bt-perso{
+    background-color: slateblue;
+    color: white;
+    font-size: large;
+    border-radius: 5px;
+    border-color: aliceblue;
+    padding: 7px;
+    font-family: 'Noto Serif';
+}
+
+.bt-perso:hover{
+    background-color: steelblue;
+    border-color: aliceblue;
+}
+
+.zone-saisie{
+    width: 20%;
+    padding: 10px;
+    font-family: 'Noto Serif';
+    font-size: large;
+}
+
+.zone-groupe{
+    padding: 4px;
+}
+
+.zone{
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.titre{
+    color: mediumblue;
+}
+
+.text-err{
+    font-size: large;
+    color: tomato;
+}
+
+.p-perso{
+    letter-spacing: 5px;
+    font-family: 'Noto Serif';
+}
+
+.card-shadow{
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
