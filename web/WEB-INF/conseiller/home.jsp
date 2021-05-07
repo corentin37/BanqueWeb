@@ -13,7 +13,10 @@
     </head>
     <body>
         <%@include file="menu.jsp" %>
-        <br><br><br>
-        <h2>Bienvenue sur la page d'accueil de conseiller !</h2>
+        <br><br><br><br><br><br><br>
+        <div class="center">
+            <h2>Bienvenue sur la page d'accueil !</h2>
+        </div>
+        
     </body>
 </html>

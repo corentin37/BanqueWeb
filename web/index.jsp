@@ -10,7 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-    <link rel="stylesheet"
+    <link rel="stylesheet" href="css/newcss.css">
+        <link rel="stylesheet"
         href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
         integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -26,33 +27,7 @@
     </head>
     <body>
         <h2>Banque Web</h2>
-        <!--<form action="login/user" method="POST"> 
-        
-           
-        
-            <button type="submit" class="bt-perso">Client</button>
-            <br>
-            <p class ="text-err">${msg}</p>
-        </form>
-        <form action="login/conseiller" method="POST"> 
-        
-            
-        
-            <button type="submit" class="bt-perso">Conseiller</button>
-            <br>
-            <p class ="text-err">${msg}</p>
-        </form>
-        <form action="login/admin" method="POST"> 
-        
-            
-        
-            <button type="submit" class="bt-perso">Admin</button>
-            <br>
-            <p class ="text-err">${msg}</p>
-            
-            
-        </form>
-        -->
+       
         <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#">Dev-2-2021</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"

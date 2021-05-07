@@ -1,6 +1,6 @@
 <%-- 
-    Document   : comptesClients
-    Created on : 7 mai 2021, 10:37:32
+    Document   : deconnecter
+    Created on : 7 mai 2021, 16:16:54
     Author     : damie
 --%>
 
@@ -9,16 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/newcss.css">
         <title>JSP Page</title>
     </head>
     <body>
-        <%@include file="menu.jsp" %>
-        <br><br><br>
-        <div class="center">
-            <h1>Comptes clients</h1>
-            <br>
-            <p>Voici la liste des clients</p>
+        <div class="center mt-300">
+            <h1>Vous êtes bien déconnecté.</h1>
         </div>
-
+        
     </body>
 </html>

@@ -20,6 +20,10 @@ and open the template in the editor.
     margin-top: 4px;
 }
 
+.mt-300{
+    margin-top: 300px;
+}
+
 .bt-perso{
     background-color: slateblue;
     color: white;
@@ -70,4 +74,8 @@ and open the template in the editor.
 
 .body {
     background: white;
+}
+
+.color-red{
+    color: red;
 }
