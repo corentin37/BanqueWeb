@@ -14,22 +14,32 @@ public class User {
     private String nom;
     private String login;
     private String mdp;
+    private String mail;
     
 public User(){
     
 }
 
-public User(int id, String nom, String login, String mdp){
+public User(int id, String nom, String login, String mdp, String mail){
     this.id = id;
     this.nom = nom;
     this.login = login;
     this.mdp = mdp;
+    this.mail = mail;
 }
 
     public void setId(int id) {
         this.id = id;
     }
-
+    
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+    
+    public String getMail(){
+        return mail;
+    }
+    
     public void setNom(String nom) {
         this.nom = nom;
     }

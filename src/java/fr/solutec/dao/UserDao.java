@@ -20,7 +20,7 @@ public class UserDao {
         //Person est le nom de la table de la bd
         //si écrit comme ça risque de faille et piratage, donc pas de concat dans une requete sql.Il peut écrire une requete au lieu de login et mdp
         //String sql = "SELECT * FROM Person WHERE login = " + login + " AND mdp = " + mdp;
-        String sql = "SELECT * FROM Person WHERE login = ? AND mdp = ? ";
+        String sql = "SELECT * FROM person WHERE login = ? AND password = ? ";
         
         //on va se connecter à notre bd en créant une variable de type Connection
         Connection connexion = AccessBD.getConnection();
@@ -37,13 +37,14 @@ public class UserDao {
             u.setId(rs.getInt("id"));
             u.setNom(rs.getString("nom"));
             u.setLogin(rs.getString("login"));
+            u.setMail(rs.getString("mail"));
         }
         // si u est nul la personne qui tente de se connecter n'existe pas 
         return u;
     }
     public static void insert (String nom, String login, String password)throws SQLException{
         //pas de resultset car on fait un insert
-        String sql = "INSERT INTO person (nom, login, mdp) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO person (nom, login, password) VALUES (?, ?, ?)";
             Connection connexion = AccessBD.getConnection();
             PreparedStatement prepare = connexion.prepareStatement(sql);
             prepare.setString(1, nom);
@@ -73,6 +74,7 @@ public static List<User> getAllPerson()throws SQLException {
             u.setId(rs.getInt("id"));
             u.setNom(rs.getString("nom"));
             u.setLogin(rs.getString("login"));
+            u.setMail(rs.getString("mail"));
             
             users.add(u);
         }

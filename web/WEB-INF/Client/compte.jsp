@@ -1,7 +1,7 @@
 <%-- 
-    Document   : home
-    Created on : 6 mai 2021, 16:35:29
-    Author     : Corentin
+    Document   : compte
+    Created on : 7 mai 2021, 10:46:49
+    Author     : Floriane Richard
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Compte</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="menu.jsp" %>
     </body>
 </html>

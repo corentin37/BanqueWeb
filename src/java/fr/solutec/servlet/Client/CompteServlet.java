@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.solutec.servlet;
+package fr.solutec.servlet.Client;
 
-import fr.solutec.dao.UserDao;
-import fr.solutec.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author damie
+ * @author Floriane Richard
  */
-@WebServlet(name = "ConnexionClientServlet", urlPatterns = {"/loginUser"})
-public class ConnexionClientServlet extends HttpServlet {
+@WebServlet(name = "CompteServlet", urlPatterns = {"/compte"})
+public class CompteServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +37,10 @@ public class ConnexionClientServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConnexionClientServlet</title>");            
+            out.println("<title>Servlet CompteServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConnexionClientServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CompteServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +58,7 @@ public class ConnexionClientServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("indexUser.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Client/compte.jsp").forward(request, response);
     }
 
     /**
@@ -74,23 +72,7 @@ public class ConnexionClientServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          String identifiant = request.getParameter("login");
-        String mdp = request.getParameter("password");
-        try {
-           User u =  UserDao.getByLoginAndPassword(identifiant, mdp);
-            if(u!=null){
-                request.getSession(true).setAttribute("user", u);
-                response.sendRedirect("homeclient");
-        }
-            else{
-                request.setAttribute("msg", "identifiant ou mot de passe incorrect");
-                request.getRequestDispatcher("indexUser.jsp").forward(request, response);
-                
-            }
-        } catch (Exception e) {
-            PrintWriter out = response.getWriter();
-            out.println("exc : "+e.getMessage());
-        }
+        processRequest(request, response);
     }
 
     /**
