@@ -85,7 +85,7 @@ public class HomeAdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("WEB-INF/Admin/homeAdmin.jsp").forward(request, response);
     }
 
     /**

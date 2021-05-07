@@ -66,18 +66,18 @@ public class AdminCreerConseillerServlet extends HttpServlet {
         User u = (User)session.getAttribute("user");
         if(u!=null){
             
-            /*try {
-               List<User> users = UserDao.getAllPerson(u);
-                request.setAttribute("notes", users);
+            try {
+               List<User> users = UserDao.getAllPerson();
+                request.setAttribute("conseillers", users);
                request.getRequestDispatcher("WEB-INF/Admin/creerConseiller.jsp").forward(request, response);
-            } catch (Exception e) {
+           } catch (Exception e) {
                 PrintWriter out = response.getWriter();
                 out.println(e.getMessage());
-            }*/
+            }
             
         }
         else{
-            request.setAttribute("msg", "veuillez vous connecter");
+            request.setAttribute("msg", "veuillez vous connecter en tant qu'Admin");
         
         request.getRequestDispatcher("indexAdmin.jsp").forward(request, response);
         }
@@ -102,10 +102,9 @@ public class AdminCreerConseillerServlet extends HttpServlet {
         String mdp = request.getParameter("motPasse");
         String mail = request.getParameter("email");
         
-        //User conseiller = new User(0,name,identifiant,mdp,mail); si on met User en paramètre dans UserDao.insert();
+       // User conseiller = new User(0,name,identifiant,mdp,mail); //si on met User en paramètre dans UserDao.insert();
         try {
             UserDao.insert(name, identifiant, mdp, mail);
-            request.setAttribute("msg", "nouvelle personne insérée");
             response.sendRedirect("creerConseiller");
         } catch (Exception e) {
                PrintWriter out = response.getWriter();
