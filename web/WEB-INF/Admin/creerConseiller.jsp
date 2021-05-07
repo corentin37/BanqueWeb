@@ -1,7 +1,7 @@
 <%-- 
-    Document   : indexAdmin
-    Created on : 7 mai 2021, 09:30:14
-    Author     : damie
+    Document   : creerConseiller
+    Created on : 7 mai 2021, 11:52:05
+    Author     : Corentin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+                  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link rel="stylesheet"
         href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
         integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
@@ -26,32 +26,28 @@
         <link rel="stylesheet" href="css/newcss.css">
     </head>
     <body>
-        <!--<div class="center mt-100">
-        <div>
-        <img src="img/image.jpg" alt="" width="15%" class="img">
-       </div>
-        <div>
-            <h2 class ="titre-perso">Dev-1-2021</h2>
-        </div>-->
-        </div>
-        <!-- l'action doit être un url patterns, ça doit renvoyer à une servlet et on va chercher la méthode(POST ici) de cette servlet et ça va exécuter cette méthode quand on cliquera sur le boutton
-        dans ce do post on va pouvoir récupérer les infos saisie de ce formulaire-->
         <br>
         <br>
         <div class="center">
-            <h1>Admin Indentification</h1>
+            <h1>Créer un profil conseiller</h1>
         </div>
         <br>
         <br>
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-            <form action="loginAdmin" method="POST">
+            <form action="creerConseiller" method="POST">
                 <div class="zone-group">
-                    <input type="text" placeholder="login"  value="${param['login']}" class="form-control" id = "login" name="login" required><!-- le $ param pour éviter que la saisie se vide en cas de mauvais mdp et bon id-->
+                    <input type="text" placeholder="name" class="form-control" id = "nom" name="nom" required><!-- le $ param pour éviter que la saisie se vide en cas de mauvais mdp et bon id-->
             </div>
             <div class="zone-group">
-                <input type="password" placeholder="password" class="form-control" id="password" name="password" required>
+                <input type="int" placeholder="login" class="form-control" id="id" name="id" required>
+            </div>
+            <div class="zone-group">
+                <input type="text" placeholder="password" class="form-control" id="motPasse" name="motPasse" required>
+            </div>
+            <div class="zone-group">
+                <input type="text" placeholder="email" class="form-control" id="email" name="email" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block">valider</button><!--rajouter le type submit-->
             <br>

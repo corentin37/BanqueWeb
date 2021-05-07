@@ -42,14 +42,16 @@ public class UserDao {
         // si u est nul la personne qui tente de se connecter n'existe pas 
         return u;
     }
-    public static void insert (String nom, String login, String password)throws SQLException{
+    public static void insert (String nom, String login, String password, String mail)throws SQLException{
         //pas de resultset car on fait un insert
-        String sql = "INSERT INTO person (nom, login, password) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO person (nom, login, password, mail) VALUES (?, ?, ?, ?)";
             Connection connexion = AccessBD.getConnection();
             PreparedStatement prepare = connexion.prepareStatement(sql);
             prepare.setString(1, nom);
             prepare.setString(2, login);
             prepare.setString(3, password);      
+            prepare.setString(4, mail);
+
             prepare.execute();
     }
     
