@@ -28,15 +28,13 @@
     <body>
         <br>
         <br>
-        <div class="center">
-            <h1>Créer un profil conseiller</h1>
-        </div>
-        <br>
-        <br>
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
             <form action="creerConseiller" method="POST">
+                 <h1>Créer un profil conseiller</h1>
+                 <br>
+        <br>
                 <div class="zone-group">
                     <input type="text" placeholder="name" class="form-control" id = "nom" name="nom" required><!-- le $ param pour éviter que la saisie se vide en cas de mauvais mdp et bon id-->
             </div>
@@ -49,9 +47,12 @@
             <div class="zone-group">
                 <input type="text" placeholder="email" class="form-control" id="email" name="email" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">valider</button><!--rajouter le type submit-->
             <br>
+            <button type="submit" class="btn btn-primary btn-block">valider</button><!--rajouter le type submit-->
             <p class="text-erreur"> ${msg}</p> <!-- message d'erreur si mdp incorrect-->
+            </form>
+            <form action="hAdmin" method="POST">
+                <button type="submit" class="btn btn-primary btn-block">retour</button>
             </form>
             
             <p class="text-erreur" id="msg-erreur"></p>

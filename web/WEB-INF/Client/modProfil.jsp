@@ -28,7 +28,7 @@
         <%@include file="menu.jsp" %>
         <br>
          <div class="container ">
-        <h2>Profil de ${nomClient} </h2>
+        <h2>Profil de ${user.nom} </h2>
        <hr> <br>
         
          <img src="img/astrocat.jpg" alt="Photo de profil">
@@ -37,7 +37,9 @@
         <div class="row">
             <div class="col-sm-5">
                 <br>
-                Login : ${loginClient}
+                Login : ${user.login}
+                <br>
+                E-mail : ${user.mail}
                 <br>
                 Conseiller : ${conseiller}              
                 <br><br>
@@ -56,10 +58,11 @@
                     </div>
                     <div class="form-group">
                         <label for="mdp">Login</label>
-                        <input type="String" class="form-control" id="mdpClient" placeholder="Login">
+                        <input type="String" class="form-control" id="loginCl" placeholder="Login">
                     </div>
+                    <button type="submit" class="btn btn-primary">Valider les modifications</button>
                 </form>
-                <button type="submit" class="btn btn-primary">Valider les modifications</button>
+                
             </div>
             
 

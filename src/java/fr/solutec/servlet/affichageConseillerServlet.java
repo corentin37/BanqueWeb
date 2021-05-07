@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Corentin
  */
-@WebServlet(name = "AfficherConseillers", urlPatterns = {"/AfficherConseillers"})
-public class AfficherConseillers extends HttpServlet {
+@WebServlet(name = "affichageConseillerServlet", urlPatterns = {"/affichageConseillerServlet"})
+public class affichageConseillerServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,10 @@ public class AfficherConseillers extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AfficherConseillers</title>");            
+            out.println("<title>Servlet affichageConseillerServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AfficherConseillers at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet affichageConseillerServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +58,7 @@ public class AfficherConseillers extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("WEB-INF/Admin/afficherConseiller.jsp").forward(request, response);
     }
 
     /**

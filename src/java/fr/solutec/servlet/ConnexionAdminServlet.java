@@ -5,6 +5,7 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.AdminDao;
 import fr.solutec.dao.UserDao;
 import fr.solutec.model.User;
 import java.io.IOException;
@@ -79,7 +80,7 @@ public class ConnexionAdminServlet extends HttpServlet {
        String mdp = request.getParameter("password");
        
         try {
-            User u = UserDao.getByLoginAndPassword(identifiant,mdp);
+            User u = AdminDao.getByLoginAndPassword(identifiant,mdp);
             if(u!= null){
                 //on va créer la session pour ne pas aller sur /home directement sans connexion
                 request.getSession(true).setAttribute("user", u);//setAttribute clé valeur, true car on ouvre la session
