@@ -14,6 +14,7 @@
     <body>
         <%@include file="menu.jsp" %>
         <br><br><br>
-        <h2>Comptes clients</h2>
+        <h1>Comptes clients</h1>
+        <p>Voici la liste des clients</p>
     </body>
 </html>

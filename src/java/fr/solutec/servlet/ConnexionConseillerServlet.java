@@ -5,6 +5,8 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.UserDao;
+import fr.solutec.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -73,7 +75,23 @@ public class ConnexionConseillerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        processRequest(request, response);
+         String identifiant = request.getParameter("login");
+        String mdp = request.getParameter("password");
+        try {
+           User u =  UserDao.getByLoginAndPassword(identifiant, mdp);
+            if(u!=null){
+                request.getSession(true).setAttribute("user", u);
+                response.sendRedirect("conseillerHome");
+        }
+            else{
+                request.setAttribute("msg", "identifiant ou mot de passe incorrect");
+                request.getRequestDispatcher("indexConseiller.jsp").forward(request, response);
+                
+            }
+        } catch (Exception e) {
+            PrintWriter out = response.getWriter();
+            out.println("exc : "+e.getMessage());
+        }
     }
 
     /**

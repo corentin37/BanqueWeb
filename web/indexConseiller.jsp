@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="login" method="POST"> 
+        <form action="ConnectServlet" method="POST"> 
         
             <div class="zone-groupe">
                 <input type="text" placeholder="login" value="${param['login']}" class="zone-saisie" name="login" id="login" required>
